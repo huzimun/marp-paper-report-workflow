@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marp Paper Report Workflow"
+  short_description: "Versioned Marp paper deck automation."
+  default_prompt: "Use $marp-paper-report-workflow to fact-check and revise this paper-based Marp presentation with versioned outputs."

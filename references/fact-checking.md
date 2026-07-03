@@ -14,9 +14,24 @@ Create one row per paper with:
 - `local_pdf`
 - `download_or_user_provided`
 - `identity_check`: title/authors/year/DOI or arXiv match status.
+- `chinese_summary`: path or anchor for the paper's Chinese summary in `workflow_outputs/paper_summaries.md`.
 - `notes`: publisher access issue, preprint/final mismatch, missing pages, or supplement files.
 
 If using a non-publisher source, confirm it is the same paper by matching title, author list, year, and DOI/arXiv. Record any version mismatch.
+
+## Chinese Paper Summaries
+
+Create `workflow_outputs/paper_summaries.md` after downloading or receiving the PDFs. Add one 150-300 Chinese character summary per paper with:
+
+- `paper_id`
+- title, authors, venue, year
+- research question
+- method, task, dataset, or experimental design
+- core findings
+- how the paper supports or frames the deck
+- human verification entry point: local PDF filename plus section, page, figure, or table to inspect first
+
+Keep summaries concise and audit-friendly. Do not translate the whole abstract. Do not present Codex inference as a paper conclusion; mark uncertain interpretation as `需复核`.
 
 ## Claim Record
 

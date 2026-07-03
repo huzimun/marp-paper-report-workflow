@@ -2,17 +2,19 @@
 
 ## Versioned Outputs
 
-Never edit the source deck as the only copy. Use one of these patterns:
+Never edit the source deck as the only copy. For formal deck revisions, prefer incremental versions:
 
-- Timestamp: `deck.workflow-YYYYMMDD-HHMM.marp.md`
 - Iteration: `deck.workflow-v01.marp.md`, `deck.workflow-v02.marp.md`
-- Stable trial plus versions: `artifacts/deck.trial.marp.md` and archived copies in `versions/`
+- Current candidate: `artifacts/deck.current.marp.md`
+- Formal history: `versions/deck.workflow-vNN.marp.md`
 
 Keep generated PDFs tied to the Markdown version by matching names.
+Do not overwrite an approved version. Start each new round by copying the latest approved Markdown/PDF pair to the next version number, then edit only the new version.
+Keep `artifacts/` for current candidates, temporary exports, and inspection files; keep `versions/` for formal history.
 
 ## Iteration Log
 
-Record each revision with:
+Maintain `workflow_outputs/version_log.md` or an equivalent project-local log. Record each formal revision with:
 
 - version id
 - date/time
@@ -21,9 +23,11 @@ Record each revision with:
 - changed slide pages
 - user request or approval point
 - files changed
+- figure assets created or updated
 - compile command
 - output PDF
 - visual check result
+- approval status: `pending`, `approved`, or `rejected`
 - unresolved issues
 
 If a user reports a problem, add the report and the fix attempt to the log rather than silently replacing history.
@@ -42,3 +46,4 @@ If a user reports a problem, add the report and the fix attempt to the log rathe
 - Do not modify pages without placeholders unless the user names them.
 - Do not regenerate artifacts from stale scripts if manual edits have superseded script output; update the script first or compile the current Markdown directly.
 - Keep rollback possible by retaining the previous working version before substantial edits.
+- Treat `versions/deck.workflow-vNN.*` as immutable after approval. If an approved version needs correction, create `vNN+1` and document the correction.

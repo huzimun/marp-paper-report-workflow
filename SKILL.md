@@ -12,7 +12,7 @@ Turn a paper-based Marp presentation into a verifiable, versioned, and mostly au
 ## Core Rules
 
 - Preserve user work. Never overwrite the source deck directly; create a versioned working copy and outputs.
-- Edit only pages the user names or pages containing explicit placeholders such as `鍥捐〃鍗犱綅`, unless the user approves broader edits.
+- Edit only pages the user names or pages containing explicit placeholders such as `图表占位`, unless the user approves broader edits.
 - Keep privacy out of reusable records. Do not hard-code personal names, local home paths, course folders, credentials, or private URLs in skill outputs.
 - Prefer traceable evidence over polished prose. Every factual claim kept in the deck should be supported, corrected, labeled as inference, or marked unresolved.
 - Treat PDF as the final preview/export artifact. Use inline HTML/CSS/SVG only as a Marp drawing method; keep standalone HTML only when needed for inspection or debugging.
@@ -24,12 +24,13 @@ Turn a paper-based Marp presentation into a verifiable, versioned, and mostly au
    - Detect the source `.md`/`.marp.md`.
    - Create `workflow_outputs/` with `papers/`, `figures/`, `artifacts/`, and `versions/` or an equivalent project-local structure.
    - Copy the source deck to a timestamped or semver-style working file before editing.
-   - Record each iteration in a change log with deck version, changed pages, reason, commands, and outputs.
+   - Record each formal iteration in `workflow_outputs/version_log.md` or an equivalent project-local version log with deck version, changed pages, reason, commands, outputs, visual checks, and approval status.
 
 2. Build the evidence base:
    - Identify referenced papers from the deck and meeting notes.
    - Download or use user-provided PDFs. If publisher download fails, use arXiv or another repository only after confirming title, authors, year, DOI, and version match.
    - Create a paper manifest with title, authors, venue, year, DOI/arXiv, source link, local filename, and verification status.
+   - Generate a Chinese paper summary for every downloaded or user-provided paper and save it to `workflow_outputs/paper_summaries.md`. Each summary should be 150-300 Chinese characters and cover the research question, method or experiment design, core findings, relevance to the deck, and a human verification entry point.
    - For detailed fields, read `references/fact-checking.md`.
 
 3. Fact-check the deck:
@@ -42,12 +43,12 @@ Turn a paper-based Marp presentation into a verifiable, versioned, and mostly au
    - Use paper originals for empirical results and named figure placeholders.
    - Use cropped originals or simplified redraws only when the original is too dense, while preserving a source note.
    - When a placeholder asks for labels or annotations, produce an annotated figure rather than inserting the raw original unchanged.
-   - Write figure explanations with a traceable opening such as `Author et al. Fig. 1:` or `Author et al. Table 1:`. Do not start with generic labels such as `璇诲浘锛歚.
+   - Write figure explanations with a traceable opening such as `Author et al. Fig. 1:` or `Author et al. Table 1:`. Do not start with generic labels such as `读图：`.
    - Make every figure explanation stand alone: a reader should understand what the figure means from the image plus the explanation, without relying on presenter narration.
    - Use HTML/CSS/SVG inside Marp for concepts, mechanisms, and process diagrams.
    - Use generated bitmap images only for strongly visual/illustrative needs.
    - Put every source note on the slide bottom line in one consistent format:
-     `鏉ユ簮锛欰uthor et al., Paper Title, Venue, Year, https://...`
+     `来源：Author et al., Paper Title, Venue, Year, https://...`
    - For layout checks and page rules, read `references/marp-layout.md`.
 
 5. Compile and inspect:
@@ -65,13 +66,14 @@ Turn a paper-based Marp presentation into a verifiable, versioned, and mostly au
    - Versioned working Marp Markdown.
    - Generated PDF.
    - Paper manifest.
+   - Chinese paper summaries.
    - Fact-check record with human-verifiable excerpts and locations.
    - Workflow validation record with page numbers.
    - Marp environment validation conclusion and fallback path.
 
 ## Version Management
 
-Read `references/versioning-and-safety.md` before substantial edits, multi-round revisions, or any task involving privacy/security constraints.
+Read `references/versioning-and-safety.md` before substantial edits, multi-round revisions, or any task involving privacy/security constraints. Do not overwrite an approved version; derive the next version number from the latest approved Markdown/PDF pair.
 
 ## Useful References
 
